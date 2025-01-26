@@ -1,7 +1,6 @@
 "use client";
 
 import React, { CSSProperties, forwardRef, useEffect, useState } from 'react';
-
 interface BackgroundProps {
     position?: CSSProperties['position'];
     gradient?: boolean;
@@ -81,70 +80,7 @@ const Background = forwardRef<HTMLDivElement, BackgroundProps>(({
                     }}>
                 </div>
             )}
-            {lines && (
-                <div
-                    ref={ref}
-                    className={className}
-                    style={{
-                        position: position,
-                        zIndex: '0',
-                        top: '0',
-                        left: '0',
-                        width: '100%',
-                        height: '100%',
-                        backgroundImage: 'repeating-linear-gradient(45deg, var(--brand-on-background-weak) 0, var(--brand-on-background-weak) 0.5px, var(--static-transparent) 0.5px, var(--static-transparent) var(--static-space-8))',
-                        maskImage: 'linear-gradient(to bottom left, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 70%)',
-                        maskSize: '100% 100%',
-                        maskPosition: 'top right',
-                        maskRepeat: 'no-repeat',
-                        opacity: '0.2',
-                        ...style,
-                    }}>
-                </div>
-            )}
-            {shootingStars && stars.map((star) => (
-            <div
-                key={star.id}
-                className={className}
-                style={{
-                    position: 'absolute',
-                    top: star.top,
-                    left: star.left,
-                    width: '1px',
-                    height: '1px',
-                    background: 'linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0))', // Horizontal gradient for trail
-                    animation: 'shooting-star 5s ease-out forwards',
-                    perspective: '1000px', // Set perspective to simulate depth
-                    ...style,
-                }}
-            />
-        ))}
-        <style jsx>{`
-            @keyframes shooting-star {
-                0% {
-                    width: 1px; // Start small
-                    opacity: 0;
-                    transform: translateZ(-1000px) scale(0.1) rotateY(45deg); // Start far away, small and rotated
-                    transform-origin: left center;
-                }
-                20% {
-                    width: 400px; // Expand width for trail
-                    opacity: 1;   // Fully visible
-                    transform: translateZ(-500px) scale(0.5) rotateY(45deg); // Move closer and grow
-                }
-                80% {
-                    width: 400px;
-                    opacity: 1;   // Hold visibility
-                    transform: translateZ(0px) scale(1) rotateY(45deg); // Closest to the viewer, full size
-                }
-                100% {
-                    width: 0px;  // Shrink width as it fades
-                    opacity: 0;  // Fade out
-                    transform: translateZ(300px) scale(2) rotateY(45deg); // Move past the viewer and grow
-                    transform-origin: left center;
-                }
-            }
-        `}</style>
+            
         </>
     );
 });

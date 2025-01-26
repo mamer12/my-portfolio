@@ -1,21 +1,29 @@
+"use client";
+
 import React from "react";
-import styled from "styled-components";
+import { Flex } from "@/once-ui/components";
+import styles from "./Loader.module.scss";
 
 const Loader = () => {
   return (
-    <StyledWrapper>
-      <div className="card">
-        <div className="loader">
-          <p>loading</p>
-          <div className="words">
-            <span className="word">buttons</span>
-            <span className="word">forms</span>
-            <span className="word">switches</span>
-            <span className="word">cards</span>
-            <span className="word">buttons</span>
-          </div>
-        </div>
+    <Flex
+      fillWidth
+      fillHeight
+      justifyContent="center"
+      alignItems="center"
+      className={styles.loader}
+    >
+      <div className={styles.loaderContainer}>
+        <div className={styles.circle}></div>
+        <div className={styles.circle}></div>
+        <div className={styles.circle}></div>
+        <div className={styles.shadow}></div>
+        <div className={styles.shadow}></div>
+        <div className={styles.shadow}></div>
+        <span>Loading</span>
       </div>
-    </StyledWrapper>
+    </Flex>
   );
 };
+
+export default Loader;

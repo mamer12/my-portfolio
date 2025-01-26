@@ -2,6 +2,7 @@ import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
 
 import { Flex } from "@/once-ui/components";
+import { BackgroundMusic } from "./components/BackgroundMusic";
 import classNames from "classnames";
 import { Raleway } from 'next/font/google';
 import { Sora } from 'next/font/google';
@@ -69,6 +70,7 @@ export default function RootLayout({
       <Flex as="body" fillWidth fillHeight margin="0" padding="0">
         <Flex flex={1} direction="column">
           {children}
+          <BackgroundMusic />
         </Flex>
       </Flex>
     </Flex>
