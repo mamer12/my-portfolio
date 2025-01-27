@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useScrollAnimation } from './hooks/useScrollAnimation';
 import { BackgroundMusic } from "./components/BackgroundMusic";
 
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   // Update the useScrollAnimation hook configuration
@@ -40,7 +39,7 @@ export default function Home() {
       alignItems="center"
       flex={1}
     >
-
+      <BackgroundMusic />
       <Background dots={false} />
       <Flex
         as="header"
@@ -78,7 +77,6 @@ export default function Home() {
               </Link>
             ))}
             <Button variant="primary">Download CV</Button>
-            <BackgroundMusic />
           </Flex>
         </Flex>
       </Flex>

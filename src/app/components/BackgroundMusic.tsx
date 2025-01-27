@@ -4,19 +4,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Flex } from '@/once-ui/components';
 
 const BackgroundMusic = () => {
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     const audioRef = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
         audioRef.current = new Audio('/music/background-sound.mp3');
         audioRef.current.loop = true;
+        audioRef.current.play().catch(error => {
+            console.log('Auto-play failed:', error);
+            setIsPlaying(false);
+        });
 
         return () => {
             if (audioRef.current) {
                 audioRef.current.pause();
                 audioRef.current = null;
             }
-            
         };
     }, []);
 
@@ -44,9 +47,6 @@ const BackgroundMusic = () => {
                 border: 'none',
                 transition: 'transform 0.2s ease-in-out',
                 transform: 'scale(1)',
-            }}
-            _hover={{
-                transform: 'scale(1.1)'
             }}
             justifyContent="center"
             alignItems="center"
