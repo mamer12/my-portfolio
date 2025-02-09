@@ -2,10 +2,9 @@
 
 import React from 'react';
 import { Flex, Heading, Grid, Text, Icon } from '@/once-ui/components';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export const Projects = () => {
-    const [projectsRef, projectsVisible] = useScrollAnimation({ threshold: 0.1 });
+
 
     const projects = [
         {
