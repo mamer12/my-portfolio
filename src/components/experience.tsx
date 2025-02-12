@@ -68,21 +68,21 @@ export default function Experience() {
       </BlurFade>
 
       <div className="container mx-auto px-4">
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {experiences.map((exp, index) => (
             <BlurFade key={`${exp.company}-${exp.title}`} delay={0.25 + index * 0.25} inView>
               <NeonGradientCard>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-start flex-wrap gap-2">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
-                      <h3 className="text-2xl font-semibold">{exp.title}</h3>
-                      <p className="text-lg text-gray-600 dark:text-gray-400">{exp.company}</p>
+                      <h3 className="text-xl sm:text-2xl font-semibold">{exp.title}</h3>
+                      <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">{exp.company}</p>
                     </div>
-                    <span className="text-sm px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800">
+                    <span className="text-sm px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 w-fit">
                       {exp.period}
                     </span>
                   </div>
-                  <ul className="list-disc list-inside space-y-2">
+                  <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
                     {exp.description.map((item, i) => (
                       <li key={i} className="text-pretty">{item}</li>
                     ))}
@@ -91,7 +91,7 @@ export default function Experience() {
                     {exp.technologies.map((tech) => (
                       <span 
                         key={tech}
-                        className="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800"
+                        className="px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-full bg-gray-100 dark:bg-gray-800"
                       >
                         {tech}
                       </span>
