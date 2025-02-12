@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
-import { HiDownload } from 'react-icons/hi';
 
 const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);

@@ -1,18 +1,15 @@
 
-import { DotPattern } from "@/components/magicui/dot-pattern";
 import { cn } from "@/lib/utils";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { Marquee } from "@/components/magicui/marquee";
 import { FaReact, FaNodeJs, FaDocker, FaGithub, FaPython, FaAws } from "react-icons/fa";
 import {
-  SiTypescript, SiJavascript, SiNextdotjs, SiRubyonrails, SiFlutter,
-  SiGraphql, SiMysql, SiPostgresql, SiMongodb, SiFirebase,
-  SiGit
+SiTypescript, SiJavascript, SiNextdotjs, SiRubyonrails, SiFlutter,
+SiGraphql, SiMysql, SiPostgresql, SiMongodb, SiFirebase,
+SiGit
 } from "react-icons/si";
 import { TbApi } from "react-icons/tb";
 import { BsDatabaseCheck } from "react-icons/bs";
-import { useState, useEffect } from "react";
-import Loader from "./loader";
 
 const skillCategories = {
   development: [
@@ -42,7 +39,7 @@ const skillCategories = {
   ],
 };
 
-const IconCard = ({ icon: Icon, name }: { icon: React.ElementType; name: string }) => {
+const IconCard = ({ icon: Icon }: { icon: React.ElementType; }) => {
   return (
     <div
       className={cn(
@@ -68,7 +65,7 @@ export default function Hero() {
       </BlurFade>
       <BlurFade delay={0.5} inView>
         <span className="text-pretty text-xl tracking-tighter sm:text-3xl xl:text-4xl/none mb-8">
-          It's Mustafa !
+        It&apos;s Mustafa !
         </span>
       </BlurFade>
 
