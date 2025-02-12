@@ -1,33 +1,38 @@
 {
-	"name": "@once-ui-system/nextjs-starter",
-	"version": "0.3.1",
-	"scripts": {
-		"dev": "next dev",
-		"export": "next export",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint"
-	},
-	"dependencies": {
-		"@floating-ui/react-dom": "^2.1.1",
-		"classnames": "^2.5.1",
-		"next": "^14.2.4",
-		"postcss": "^8.4.39",
-		"postcss-preset-env": "^9.5.15",
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
-		"react-icons": "^5.2.1",
-		"sass": "^1.77.6",
-		"sharp": "^0.33.4",
-		"styled-components": "^6.1.13"
-	},
-	"devDependencies": {
-		"@csstools/postcss-global-data": "^2.1.1",
-		"@types/node": "^20",
-		"@types/react": "^18",
-		"@types/react-dom": "^18",
-		"postcss-custom-media": "^10.0.7",
-		"postcss-flexbugs-fixes": "^5.0.2",
-		"typescript": "^5"
-	}
+  "name": "my-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fontsource/space-mono": "^5.1.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cobe": "^0.6.3",
+    "lucide-react": "^0.475.0",
+    "motion": "^12.4.2",
+    "next": "15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.4.0",
+    "styled-components": "^6.1.15",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.6",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
 }
