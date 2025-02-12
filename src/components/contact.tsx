@@ -2,7 +2,7 @@
 
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
-import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Contact() {
   return (
@@ -19,8 +19,8 @@ export default function Contact() {
             <NeonGradientCard>
               <div className="space-y-6">
                 <p className="text-pretty text-lg">
-                  I'm always interested in hearing about new projects and opportunities.
-                  Feel free to reach out if you'd like to collaborate or just want to say hello!
+                I&apos;m always interested in hearing about new projects and opportunities.
+                Feel free to reach out if you&apos;d like to collaborate or just want to say hello!
                 </p>
 
                 <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>

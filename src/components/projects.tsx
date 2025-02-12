@@ -3,6 +3,7 @@
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import Image from "next/image";
 
 interface Project {
   title: string;
@@ -49,10 +50,12 @@ export default function Projects() {
               <NeonGradientCard className="h-full">
                 <div className="space-y-4">
                   {project.imageUrl && (
-                    <img 
-                      src={project.imageUrl} 
-                      alt={project.title}
-                      className="w-full h-48 object-cover rounded-lg"
+                    <Image 
+                    src={project.imageUrl} 
+                    alt={project.title}
+                    width={800}
+                    height={400}
+                    className="w-full h-48 object-cover rounded-lg"
                     />
                   )}
                   <h3 className="text-2xl font-semibold">{project.title}</h3>

@@ -1,6 +1,5 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import "./globals.css";
 import '@fontsource/space-mono/400.css'
 import '@fontsource/space-mono/700.css'
@@ -9,8 +8,6 @@ import Navbar from '@/components/navbar'
 import Loader from '@/components/loader'
 import { DotPattern } from '@/components/magicui/dot-pattern'
 import { cn } from '@/lib/utils'
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
