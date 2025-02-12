@@ -2,7 +2,11 @@
 
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
+<<<<<<< Updated upstream
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+=======
+import {  FaGithub, FaLinkedin } from "react-icons/fa";
+>>>>>>> Stashed changes
 
 export default function Contact() {
   return (
@@ -19,8 +23,13 @@ export default function Contact() {
             <NeonGradientCard>
               <div className="space-y-6">
                 <p className="text-pretty text-lg">
+<<<<<<< Updated upstream
                 I&apos;m always interested in hearing about new projects and opportunities.
                 Feel free to reach out if you&apos;d like to collaborate or just want to say hello!
+=======
+                  I&#39;m always interested in hearing about new projects and opportunities.
+                  Feel free to reach out if you&apos;d like to collaborate or just want to say hello!
+>>>>>>> Stashed changes
                 </p>
 
                 <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
