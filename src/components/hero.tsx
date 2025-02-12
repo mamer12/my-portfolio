@@ -1,4 +1,3 @@
-"use client"
 
 import { DotPattern } from "@/components/magicui/dot-pattern";
 import { cn } from "@/lib/utils";
@@ -58,24 +57,7 @@ const IconCard = ({ icon: Icon, name }: { icon: React.ElementType; name: string 
 };
 
 export default function Hero() {
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    // Simulate loading delay
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen w-screen">
-        <Loader/>
-      </div>
-    );
-  }
 
   return (
     <div className="relative flex w-screen min-h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-background py-10">
@@ -89,16 +71,48 @@ export default function Hero() {
           It's Mustafa !
         </span>
       </BlurFade>
-      <DotPattern
-        className={cn(
-          "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]",
-        )}
-      />
+
+      <BlurFade delay={0.75} inView>
+        <p className="text-center max-w-2xl mx-auto text-lg mb-8 text-gray-300">
+          Experienced Software Engineer specializing in backend development, process automation, and system integration. 
+          Expert in SQL/NoSQL databases and ERP implementations, with a track record of increasing operational efficiency by 70%.
+        </p>
+      </BlurFade>
+
+      <BlurFade delay={1} inView>
+        <div className="flex gap-4 mb-12">
+          <a
+            href="https://github.com/mamer12"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors flex items-center gap-2 border border-gray-700 hover:border-gray-600"
+          >
+            <FaGithub className="w-5 h-5" />
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/mustafa-amer-b0b1b1b1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors flex items-center gap-2 border border-gray-700 hover:border-gray-600"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a
+            href="/assets/files/cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors flex items-center gap-2 border border-gray-700 hover:border-gray-600"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            Download CV
+          </a>
+        </div>
+      </BlurFade>
 
       <div className="relative flex w-full flex-col items-center justify-center gap-8 overflow-hidden">
-        <BlurFade delay={0.75} inView>
-          <h3 className="text-2xl font-semibold mb-4">Tech Stack</h3>
-        </BlurFade>
+
 
         <Marquee pauseOnHover className="[--duration:40s]">
           {skillCategories.development.map((item) => (
