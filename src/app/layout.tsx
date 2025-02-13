@@ -1,5 +1,4 @@
 "use client";
-
 import "./globals.css";
 import '@fontsource/space-mono/400.css'
 import '@fontsource/space-mono/700.css'
@@ -34,7 +33,7 @@ export default function RootLayout({
         ) : (
           <>
             <DotPattern
-              width={100}
+
               className={cn(
                 "fixed inset-0 z-0",
                 "[mask-image:radial-gradient(1000px_circle_at_center,green,transparent)]"

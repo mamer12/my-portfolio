@@ -10,6 +10,8 @@ const scrollToSection = (sectionId: string) => {
     }
 };
 
+
+
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 

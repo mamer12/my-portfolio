@@ -36,7 +36,7 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <section className="relative flex w-screen min-h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-background py-10">
+    <section className="relative flex w-screen min-h-screen flex-col items-center justify-center gap-6 overflow-hidden  py-10">
       <BlurFade delay={0.25} inView>
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none mb-8">
           Projects
