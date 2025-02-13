@@ -1,7 +1,7 @@
 "use client"
 
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
+import { MagicCard } from "@/components/magicui/magic-card";
 
 interface Experience {
   title: string;
@@ -60,7 +60,7 @@ const experiences: Experience[] = [
 
 export default function Experience() {
   return (
-    <section className="relative flex w-screen min-h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-background py-10">
+    <section className="relative flex w-screen min-h-screen flex-col items-center justify-center gap-6 overflow-hidden py-10">
       <BlurFade delay={0.25} inView>
         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none mb-8">
           Experience
@@ -68,10 +68,12 @@ export default function Experience() {
       </BlurFade>
 
       <div className="container mx-auto px-4">
-        <div className="space-y-6 sm:space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {experiences.map((exp, index) => (
             <BlurFade key={`${exp.company}-${exp.title}`} delay={0.25 + index * 0.25} inView>
-              <NeonGradientCard>
+              <MagicCard 
+                className="relative overflow-hidden rounded-xl border border-gray-950/[.1] dark:border-gray-50/[.1] p-6 h-full"
+              >
                 <div className="space-y-3 sm:space-y-4">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                     <div>
@@ -98,7 +100,7 @@ export default function Experience() {
                     ))}
                   </div>
                 </div>
-              </NeonGradientCard>
+              </MagicCard>
             </BlurFade>
           ))}
         </div>

@@ -6,7 +6,7 @@ import {  FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Contact() {
   return (
-    <section className="relative flex w-screen min-h-screen flex-col items-center justify-center gap-6 overflow-hidden bg-background py-10">
+    <section className="relative flex w-screen min-h-screen flex-col items-center justify-center gap-6 overflow-hidden  py-10">
       <BlurFade delay={0.25} inView>
         <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-5xl xl:text-6xl/none mb-6 sm:mb-8 px-4 text-center">
           Get In Touch
@@ -16,7 +16,12 @@ export default function Contact() {
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <BlurFade delay={0.5} inView>
-            <NeonGradientCard>
+            <NeonGradientCard
+            borderRadius={20}
+            borderSize={1}
+            neonColors={ {"firstColor": "#ff40aa",
+                "secondColor": "#fff0aa"}}
+            >
               <div className="space-y-4 sm:space-y-6">
                 <p className="text-pretty text-base sm:text-lg">
                   I&#39;m always interested in hearing about new projects and opportunities.
