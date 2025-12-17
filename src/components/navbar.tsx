@@ -1,129 +1,93 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import { Briefcase, FolderGit2, Home, Mail } from "lucide-react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
+const navLinks = [
+  { id: "home", label: "Intro", icon: Home },
+  { id: "projects", label: "Projects", icon: FolderGit2 },
+  { id: "experience", label: "Experience", icon: Briefcase },
+  { id: "contact", label: "Contact", icon: Mail },
+];
 
 const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 };
 
-
-
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [active, setActive] = useState<string>("home");
 
-    return (
-        <nav className="fixed top-0 w-full z-50 bg-neutral-900/90 backdrop-blur-sm border-b border-gray-800">
-            <div className="max-w-6xl mx-auto px-4">
-                <div className="flex justify-between items-center h-16">
-                    <button onClick={() => scrollToSection('hero')} className="text-xl font-bold text-white">
-                        MA
-                    </button>
-                    <div className="container mx-auto flex justify-end items-center gap-4">
-                        <a
-                            href="https://github.com/mamer12"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition-colors"
-                        >
-                            <FaGithub className="w-6 h-6" />
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/mustafa-amer-b2b1b7227/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition-colors"
-                        >
-                            <FaLinkedin className="w-6 h-6" />
-                        </a>
-                    </div>
-                    {/* <div className="hidden md:flex space-x-8">
-                        <button onClick={() => scrollToSection('hero')} className="text-gray-300 hover:text-white transition-colors">
-                            Home
-                        </button>
-                        <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-white transition-colors">
-                            About
-                        </button>
-                        <button onClick={() => scrollToSection('projects')} className="text-gray-300 hover:text-white transition-colors">
-                            Projects
-                        </button>
-                        <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-white transition-colors">
-                            Contact
-                        </button>
-                    </div> */}
-
-                    <div className="md:hidden">
-                        <button
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="text-gray-500 hover:text-gray-600 transition-colors"
-                        >
-                            <svg
-                                className="h-6 w-6"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                {isMenuOpen ? (
-                                    <path d="M6 18L18 6M6 6l12 12" />
-                                ) : (
-                                    <path d="M4 6h16M4 12h16M4 18h16" />
-                                )}
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                {isMenuOpen && (
-                    <div className="md:hidden">
-                        <div className="px-2 pt-2 pb-3 space-y-1">
-                            <button
-                                onClick={() => {
-                                    scrollToSection('hero');
-                                    setIsMenuOpen(false);
-                                }}
-                                className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
-                            >
-                                Home
-                            </button>
-                            <button
-                                onClick={() => {
-                                    scrollToSection('about');
-                                    setIsMenuOpen(false);
-                                }}
-                                className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
-                            >
-                                About
-                            </button>
-                            <button
-                                onClick={() => {
-                                    scrollToSection('projects');
-                                    setIsMenuOpen(false);
-                                }}
-                                className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
-                            >
-                                Projects
-                            </button>
-                            <button
-                                onClick={() => {
-                                    scrollToSection('contact');
-                                    setIsMenuOpen(false);
-                                }}
-                                className="block w-full text-left px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
-                            >
-                                Contact
-                            </button>
-                        </div>
-                    </div>
-                )}
-            </div>
-        </nav>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.35 }
     );
+
+    navLinks.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <nav className="pointer-events-none fixed inset-x-0 bottom-6 z-50 flex justify-center md:bottom-8">
+      <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-2xl shadow-[0_12px_50px_rgba(0,0,0,0.35)]">
+        <div className="mr-2 hidden items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold text-white/80 sm:flex">
+          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-black">MA</span>
+          <span className="uppercase tracking-[0.12em]">Portfolio</span>
+        </div>
+        {navLinks.map(({ id, label, icon: Icon }) => {
+          const isActive = active === id;
+          return (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              className={cn(
+                "group inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition-all duration-200 active:scale-95",
+                isActive
+                  ? "bg-white text-black shadow-lg"
+                  : "text-white/70 hover:text-white hover:bg-white/10"
+              )}
+            >
+              <Icon className={cn("h-4 w-4 transition-colors", isActive ? "text-black" : "text-white/70")} />
+              <span className="hidden sm:inline">{label}</span>
+            </button>
+          );
+        })}
+        <div className="ml-2 flex items-center gap-2">
+          <a
+            href="https://github.com/mamer12"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+          >
+            <FaGithub className="h-5 w-5" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/mustafa-amer-b0b1b1b1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+          >
+            <FaLinkedin className="h-5 w-5" />
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;

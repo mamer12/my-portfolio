@@ -2,140 +2,213 @@
 import { cn } from "@/lib/utils";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { Marquee } from "@/components/magicui/marquee";
-import { WordRotate } from "@/components/magicui/word-rotate";
-import { FaReact, FaNodeJs, FaDocker, FaGithub, FaPython, FaAws } from "react-icons/fa";
 import {
-    SiTypescript, SiJavascript, SiNextdotjs, SiRubyonrails, SiFlutter,
-    SiGraphql, SiMysql, SiPostgresql, SiMongodb, SiFirebase,
-    SiGit
+  FaAws,
+  FaDocker,
+  FaGithub,
+  FaLinkedin,
+  FaNodeJs,
+  FaPython,
+  FaReact,
+} from "react-icons/fa";
+import { IconType } from "react-icons";
+import {
+  SiFastapi,
+  SiFlutter,
+  SiGraphql,
+  SiMongodb,
+  SiNextdotjs,
+  SiPostgresql,
+  SiRedis,
+  SiTypescript,
 } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
-import { BsDatabaseCheck } from "react-icons/bs";
 
-const skillCategories = {
-    development: [
-        { name: "JavaScript", icon: SiJavascript },
-        { name: "TypeScript", icon: SiTypescript },
-        { name: "Python", icon: FaPython },
-        { name: "Ruby on Rails", icon: SiRubyonrails },
-        { name: "Node.js", icon: FaNodeJs },
-        { name: "Flutter", icon: SiFlutter },
-        { name: "React", icon: FaReact },
-        { name: "Next.js", icon: SiNextdotjs },
-        { name: "GraphQL", icon: SiGraphql },
-        { name: "REST API", icon: TbApi },
-    ],
-    database: [
-        { name: "MySQL", icon: SiMysql },
-        { name: "PostgreSQL", icon: SiPostgresql },
-        { name: "MongoDB", icon: SiMongodb },
-        { name: "Firebase", icon: SiFirebase },
-        { name: "Database", icon: BsDatabaseCheck },
-    ],
-    devops: [
-        { name: "Docker", icon: FaDocker },
-        { name: "AWS", icon: FaAws },
-        { name: "Git", icon: SiGit },
-        { name: "GitHub", icon: FaGithub },
-    ],
-};
+type Tech = { name: string; icon: IconType };
 
-const IconCard = ({ icon: Icon }: { icon: React.ElementType; }) => {
-    return (
-        <div
-            className={cn(
-                "relative h-20 w-20 cursor-pointer overflow-hidden rounded-xl border p-3 mx-2",
-                "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-                "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
-            )}
-        >
-            <Icon className="w-full h-full" />
-        </div>
-    );
-};
+const techStack: Tech[] = [
+  { name: "Node.js", icon: FaNodeJs },
+  { name: "FastAPI", icon: SiFastapi },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "React", icon: FaReact },
+  { name: "Python", icon: FaPython },
+  { name: "PostgreSQL", icon: SiPostgresql },
+  { name: "MongoDB", icon: SiMongodb },
+  { name: "Redis", icon: SiRedis },
+  { name: "Docker", icon: FaDocker },
+  { name: "AWS", icon: FaAws },
+  { name: "GraphQL", icon: SiGraphql },
+  { name: "Flutter", icon: SiFlutter },
+];
+
+const BentoCard = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <div
+    className={cn(
+      "group relative overflow-hidden rounded-3xl border border-white/10 bg-white/5",
+      "backdrop-blur-2xl shadow-[0_20px_70px_rgba(0,0,0,0.35)] transition-all duration-300",
+      "hover:-translate-y-1 hover:border-white/20",
+      "before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/5 before:via-transparent before:to-white/5",
+      "before:opacity-0 before:transition-opacity before:duration-500 group-hover:before:opacity-100",
+      className
+    )}
+  >
+    <div className="relative h-full w-full">{children}</div>
+  </div>
+);
+
+const IconPill = ({ icon: Icon, label }: { icon: IconType; label: string }) => (
+  <div className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-3 py-2 shadow-sm">
+    <Icon className="h-5 w-5" />
+    <span className="text-sm font-medium">{label}</span>
+  </div>
+);
 
 export default function Hero() {
-    return (
-        <div className="relative flex w-screen min-h-screen flex-col items-center justify-center gap-6 overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_50%,#1a1a1a,transparent)]" />
-            
-            <div className="relative z-10 flex flex-col items-center justify-center gap-4">
-                <BlurFade delay={0.25} inView>
-                    <h2 className="text-4xl md:text-6xl xl:text-7xl font-mono font-bold tracking-tight text-center">
-                        Hello There <span className="inline-block animate-wave">👋</span>
-                    </h2>
-                </BlurFade>
-                
-                <BlurFade delay={0.5} inView>
-                    <span className="text-2xl md:text-4xl xl:text-5xl font-mono tracking-tight text-center">
-                        It&apos;s Mustafa !
-                    </span>
-                </BlurFade>
+  return (
+    <section
+      id="home"
+      className="relative flex min-h-screen w-full items-center overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(118,92,255,0.12),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(255,90,110,0.14),transparent_32%),radial-gradient(circle_at_40%_80%,rgba(58,196,125,0.12),transparent_25%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-[#0a0a0a]" />
 
-                <BlurFade delay={0.75} inView>
-                    <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-xl sm:text-2xl md:text-4xl xl:text-5xl font-mono tracking-tight text-center mt-8">
-                        <span>Experienced</span>
-                        <WordRotate words={["Full Stack", "Backend", "Automation", "ERP"]} />
-                        <span>Developer</span>
-                    </div>
-                </BlurFade>
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl items-center">
+        <div className="grid w-full auto-rows-[180px] grid-cols-1 gap-4 sm:auto-rows-[200px] sm:grid-cols-2 lg:auto-rows-[220px] lg:grid-cols-4 lg:gap-6">
+            <BentoCard className="col-span-1 row-span-2 sm:col-span-2 lg:col-span-2 p-6 sm:p-8">
+              <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.08em] text-white/60">
+                <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1">
+                  Backend · Microservices · FastAPI
+                </span>
+                <span className="flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-emerald-200">
+                  <span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_0_6px_rgba(74,222,128,0.12)] animate-pulse" />
+                  Shipping resilient systems
+                </span>
+              </div>
 
-                <BlurFade delay={1} inView>
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-12">
-                        <a
-                            href="https://github.com/mamer12"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-4 sm:px-8 py-2 sm:py-3 rounded-xl bg-gray-900/50 hover:bg-gray-900/80 backdrop-blur-sm transition-all flex items-center justify-center gap-2 border border-gray-800 w-full sm:w-auto"
-                        >
-                            <FaGithub className="w-5 h-5 sm:w-6 sm:h-6" />
-                            <span className="font-mono text-sm sm:text-base">GitHub</span>
-                        </a>
-                        <a
-                            href="https://www.linkedin.com/in/mustafa-amer-b0b1b1b1/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-4 sm:px-8 py-2 sm:py-3 rounded-xl bg-gray-900/50 hover:bg-gray-900/80 backdrop-blur-sm transition-all flex items-center justify-center gap-2 border border-gray-800 w-full sm:w-auto"
-                        >
-                            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-                            <span className="font-mono text-sm sm:text-base">LinkedIn</span>
-                        </a>
-                        <a
-                            href="/assets/files/cv.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-4 sm:px-8 py-2 sm:py-3 rounded-xl bg-gray-900/50 hover:bg-gray-900/80 backdrop-blur-sm transition-all flex items-center justify-center gap-2 border border-gray-800 w-full sm:w-auto"
-                        >
-                            <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><line x1="10" y1="9" x2="8" y2="9" /></svg>
-                            <span className="font-mono text-sm sm:text-base">Resume</span>
-                        </a>
-                    </div>
-                </BlurFade>
-            </div>
+              <BlurFade delay={0.1} inView>
+                <h1 className="mt-5 text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-6xl">
+                  Mustafa Al-Mosuli — Backend Engineer.
+                </h1>
+              </BlurFade>
+              <BlurFade delay={0.2} inView>
+                <p className="mt-4 max-w-2xl text-lg text-white/70 sm:text-xl">
+                  5+ years architecting microservices, FastAPI platforms, and ERP integrations that
+                  survive migrations (3M+ users) and drive 50% performance gains in high-transaction
+                  fintech/telecom.
+                </p>
+              </BlurFade>
+              <BlurFade delay={0.3} inView>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <a
+                    href="#projects"
+                    className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5 active:scale-95"
+                  >
+                    View selected work
+                  </a>
+                  <a
+                    href="/assets/files/CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white/40 hover:bg-white/10 active:scale-95"
+                  >
+                    Download résumé
+                  </a>
+                </div>
+              </BlurFade>
+            </BentoCard>
 
-            <div className="relative z-10 w-full flex flex-col items-center justify-center gap-8 overflow-hidden mt-12">
-                <Marquee pauseOnHover className="[--duration:40s]">
-                    {skillCategories.development.map((item) => (
-                        <IconCard key={item.name} {...item} />
-                    ))}
+            <BentoCard className="col-span-1 row-span-2 p-0">
+              <div className="absolute inset-0 overflow-hidden">
+                <div
+                  className="absolute inset-0 scale-105 bg-[url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center"
+                  style={{ filter: "grayscale(0.9)" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black/80" />
+              </div>
+              <div className="relative flex h-full flex-col justify-end p-6">
+                <p className="text-sm uppercase tracking-[0.12em] text-white/60">
+                  Crafting systems
+                </p>
+                <p className="mt-2 text-2xl font-semibold leading-tight">
+                  Clean services, observability-first, with room for play.
+                </p>
+                <p className="mt-3 text-sm text-white/60">Black & white, because focus matters.</p>
+              </div>
+            </BentoCard>
+
+            <BentoCard className="col-span-1 row-span-1 p-5 sm:p-6">
+              <div className="flex h-full flex-col justify-between gap-3">
+                <div className="text-sm uppercase tracking-[0.1em] text-white/60">Status</div>
+                <div className="flex items-center gap-3">
+                  <span className="h-3 w-3 rounded-full bg-emerald-400 shadow-[0_0_0_6px_rgba(74,222,128,0.12)]" />
+                  <p className="text-lg font-semibold">Senior Software Engineer @ Zain Iraq</p>
+                </div>
+                <p className="text-sm text-white/60">
+                  Backend/platform engineering · High-transaction, high-uptime systems.
+                </p>
+              </div>
+            </BentoCard>
+
+            <BentoCard className="col-span-1 row-span-1 p-5 sm:p-6">
+              <div className="flex h-full flex-col justify-between gap-3">
+                <div className="text-sm uppercase tracking-[0.1em] text-white/60">Location</div>
+                <p className="text-2xl font-semibold">Baghdad · UTC+3</p>
+                <p className="text-sm text-white/60">
+                  Works async-first with distributed teams.
+                </p>
+              </div>
+            </BentoCard>
+
+            <BentoCard className="col-span-1 row-span-1 sm:col-span-2 lg:col-span-2 p-0">
+              <div className="flex items-center justify-between px-5 pt-5">
+                <p className="text-sm uppercase tracking-[0.1em] text-white/60">Tech stack</p>
+                <p className="text-xs text-white/50">Scroll to peek</p>
+              </div>
+              <div className="relative mt-3 overflow-hidden">
+                <Marquee pauseOnHover className="[--duration:26s] py-4">
+                  {techStack.map((tech) => (
+                    <IconPill key={tech.name} icon={tech.icon} label={tech.name} />
+                  ))}
                 </Marquee>
-            
+                <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
+              </div>
+            </BentoCard>
 
-                <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-                <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
-            </div>
-
-            <style jsx>{`
-                @keyframes wave {
-                    0%, 100% { transform: rotate(0deg); }
-                    25% { transform: rotate(-10deg); }
-                    75% { transform: rotate(10deg); }
-                }
-                .animate-wave {
-                    animation: wave 1.5s infinite;
-                    transform-origin: 70% 70%;
-                }
-            `}</style>
+            <BentoCard className="col-span-1 row-span-1 p-5 sm:p-6">
+              <div className="flex h-full items-center justify-between gap-4">
+                <div>
+                  <p className="text-sm uppercase tracking-[0.1em] text-white/60">Social</p>
+                  <p className="text-lg font-semibold">Let&apos;s build something</p>
+                </div>
+                <div className="flex gap-3">
+                  <a
+                    href="https://github.com/mamer12"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+                  >
+                    <FaGithub className="h-5 w-5" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/mustafa-amer-b0b1b1b1/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+                  >
+                    <FaLinkedin className="h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+            </BentoCard>
         </div>
-    );
+      </div>
+    </section>
+  );
 }

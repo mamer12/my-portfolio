@@ -1,96 +1,140 @@
-"use client"
+"use client";
 
+import { useMemo, useState } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
-import {  FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
+const emailAddress = "mamer.ma1234@gmail.com";
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const confetti = useMemo(() => Array.from({ length: 14 }), []);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1400);
+    } catch {
+      setCopied(false);
+    }
+  };
+
   return (
-    <section className="relative flex w-screen min-h-screen flex-col items-center justify-center gap-6 overflow-hidden  py-10">
-      <BlurFade delay={0.25} inView>
-        <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl md:text-5xl xl:text-6xl/none mb-6 sm:mb-8 px-4 text-center">
-          Get In Touch
-        </h2>
+    <section
+      id="contact"
+      className="relative flex w-full min-h-screen flex-col items-center justify-center gap-6 overflow-hidden px-4 py-16 sm:px-6 lg:px-8"
+    >
+      <BlurFade delay={0.1} inView>
+        <div className="flex flex-col gap-3 text-center lg:text-left">
+          <p className="text-sm uppercase tracking-[0.12em] text-white/60">Contact</p>
+          <h2 className="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+            Say hello, instantly.
+          </h2>
+          <p className="text-lg text-white/70">
+            Click the email to copy. Quick replies and clear next steps.
+          </p>
+        </div>
       </BlurFade>
 
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto">
-          <BlurFade delay={0.5} inView>
-            <NeonGradientCard
-            borderRadius={20}
-            borderSize={1}
-            neonColors={ {"firstColor": "#ff40aa",
-                "secondColor": "#fff0aa"}}
+          <div className="relative z-10 w-full max-w-4xl overflow-hidden rounded-3xl border border-white/12 bg-white/5 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.35)] sm:p-8">
+        {copied && (
+          <div className="pointer-events-none absolute inset-0">
+            {confetti.map((_, index) => (
+              <span
+                key={`confetti-${index}`}
+                className="confetti-piece"
+                style={{ left: `${Math.random() * 100}%`, animationDelay: `${index * 0.05}s` }}
+              />
+            ))}
+          </div>
+        )}
+
+        <div className="flex flex-col gap-6">
+          <button
+            onClick={handleCopy}
+            className="group relative w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5 px-4 py-6 text-left transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+          >
+            <p className="text-sm uppercase tracking-[0.12em] text-white/60">Email</p>
+            <p className="text-2xl font-semibold leading-tight break-words text-balance sm:text-4xl lg:text-5xl">
+              {emailAddress}
+            </p>
+            <p className="mt-2 text-sm text-white/70">
+              {copied ? "Copied! 🎉" : "Click to copy · Responses within a day"}
+            </p>
+          </button>
+
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex gap-3">
+              <a
+                href="https://github.com/mamer12"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+              >
+                <FaGithub className="h-6 w-6" />
+              </a>
+              <a
+                href="https://linkedin.com/in/mustafa-amer-b0b1b1b1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+              >
+                <FaLinkedin className="h-6 w-6" />
+              </a>
+            </div>
+
+            <button
+              onClick={() => setShowForm((prev) => !prev)}
+              className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
             >
-              <div className="space-y-4 sm:space-y-6">
-                <p className="text-pretty text-base sm:text-lg">
-                  I&#39;m always interested in hearing about new projects and opportunities.
-                  Feel free to reach out if you&apos;d like to collaborate or just want to say hello!
-                </p>
+              {showForm ? "Hide message form" : "Send me a message"}
+            </button>
+          </div>
+          <div className="text-sm text-white/60">
+            <p>Phone: +964 7810940050</p>
+            <p>Location: Baghdad, Iraq</p>
+          </div>
 
-                <form className="space-y-3 sm:space-y-4" onSubmit={(e) => e.preventDefault()}>
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-1 sm:mb-2">Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      className="w-full px-3 sm:px-4 py-2 rounded-md bg-gray-100 dark:bg-neutral-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-1 sm:mb-2">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      className="w-full px-3 sm:px-4 py-2 rounded-md bg-gray-100 dark:bg-neutral-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
-                      placeholder="your.email@example.com"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium mb-1 sm:mb-2">Message</label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      className="w-full px-3 sm:px-4 py-2 rounded-md bg-gray-100 dark:bg-neutral-800 border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
-                      placeholder="Your message"
-                      required
-                    ></textarea>
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full px-4 sm:px-6 py-2.5 sm:py-3 text-white bg-blue-500 rounded-md hover:bg-blue-600 transition-colors text-base sm:text-lg font-medium"
-                  >
-                    Send Message
-                  </button>
-                </form>
-
-                <div className="flex justify-center gap-4 sm:gap-6 pt-4">
-                  <a 
-                    href="https://github.com/yourusername"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors p-2"
-                  >
-                    <FaGithub className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </a>
-                  <a 
-                    href="https://linkedin.com/in/yourusername"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-white transition-colors p-2"
-                  >
-                    <FaLinkedin className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </a>
-                </div>
+          {showForm && (
+            <form
+              className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+                <label className="w-full text-sm text-white/70">
+                  Name
+                  <input
+                    type="text"
+                    className="mt-2 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+                    placeholder="Your name"
+                  />
+                </label>
+                <label className="w-full text-sm text-white/70">
+                  Email
+                  <input
+                    type="email"
+                    className="mt-2 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+                    placeholder="you@example.com"
+                  />
+                </label>
               </div>
-            </NeonGradientCard>
-          </BlurFade>
+              <label className="block text-sm text-white/70">
+                Message
+                <textarea
+                  className="mt-2 h-32 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
+                  placeholder="Tell me about your idea..."
+                />
+              </label>
+              <button
+                type="submit"
+                className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5 active:scale-95"
+              >
+                Send it over
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>
