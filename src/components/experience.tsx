@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import { DarkVeil } from "@/components/magicui/dark-veil";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -68,24 +69,25 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative flex w-full min-h-screen flex-col items-center justify-center gap-6 overflow-hidden px-4 py-16 sm:px-6 lg:px-8"
+      className="relative flex w-full min-h-screen flex-col items-center justify-center overflow-hidden py-16"
     >
-      <BlurFade delay={0.1} inView>
-        <div className="flex flex-col gap-3 text-center lg:text-left">
-          <p className="text-sm uppercase tracking-[0.12em] text-white/60">Experience</p>
-          <h2 className="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
-            Roles with impact, details on demand.
-          </h2>
-          <p className="text-lg text-white/70">Click to unfold the specifics. Less clutter, more signal.</p>
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-3 text-center mb-8">
+          <div className="inline-block mx-auto rounded-2xl bg-black/40 backdrop-blur-xl px-8 py-6 shadow-2xl">
+            <p className="text-sm uppercase tracking-[0.12em] text-white/60">Experience</p>
+            <h2 className="text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl drop-shadow-2xl">
+              Roles with impact, details on demand.
+            </h2>
+            <p className="text-lg text-white/80 mt-2">Click to unfold the specifics. Less clutter, more signal.</p>
+          </div>
         </div>
-      </BlurFade>
 
-      <div className="w-full max-w-5xl space-y-4">
+      <div className="w-full max-w-5xl mx-auto space-y-4 mt-8">
         {experiences.map((exp, index) => {
           const isOpen = openCompany === exp.company;
           return (
             <BlurFade key={`${exp.company}-${exp.title}`} delay={0.15 + index * 0.05} inView>
-              <div className="rounded-2xl border border-white/12 bg-white/5 shadow-[0_12px_45px_rgba(0,0,0,0.35)]">
+              <div className="rounded-2xl border border-white/12 bg-black/40 backdrop-blur-xl shadow-[0_12px_45px_rgba(0,0,0,0.5)]">
                 <button
                   onClick={() => setOpenCompany(isOpen ? "" : exp.company)}
                   className={cn(
@@ -132,6 +134,7 @@ export default function Experience() {
             </BlurFade>
           );
         })}
+      </div>
       </div>
     </section>
   );

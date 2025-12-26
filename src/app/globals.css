@@ -62,14 +62,34 @@
 }
 
 @layer base {
-  * {
+  *,
+  *::before,
+  *::after {
     @apply border-border;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
+  
+  html {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
     font-family: "Inter", "Space Mono", monospace;
     background-color: #0a0a0a;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    scrollbar-gutter: stable;
   }
+  
   a,
   button {
     transition: color 150ms ease, background-color 150ms ease, transform 150ms ease;
@@ -124,6 +144,14 @@
       transform: translateY(80vh) rotate(240deg) scale(0.8);
       opacity: 0;
     }
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 
   .bg-aurora {

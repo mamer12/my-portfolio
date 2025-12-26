@@ -6,8 +6,7 @@ import { useState, useEffect } from 'react';
 import Lenis from 'lenis';
 import Navbar from '@/components/navbar'
 import Loader from '@/components/loader'
-import { DotPattern } from '@/components/magicui/dot-pattern'
-import { cn } from '@/lib/utils'
+import UnifiedBackground from '@/components/unified-background'
 
 export default function RootLayout({
   children,
@@ -43,24 +42,17 @@ export default function RootLayout({
   }, []);
 
   return (
-    <html lang="en">
-      <body className="dark relative bg-[#0a0a0a] text-white font-sans">
+    <html lang="en" className="overflow-x-hidden">
+      <body className="dark relative bg-[#0a0a0a] text-white font-sans overflow-x-hidden m-0 p-0 w-full">
         {isLoading ? (
-          <div className="flex items-center justify-center min-h-screen w-screen">
+          <div className="flex items-center justify-center min-h-screen w-full">
             <Loader />
           </div>
         ) : (
           <>
-            <div className="pointer-events-none fixed inset-0 -z-10 opacity-80 bg-aurora" />
-            <DotPattern
-
-              className={cn(
-                "fixed inset-0 z-0",
-                "[mask-image:radial-gradient(1000px_circle_at_center,rgba(255,255,255,0.3),transparent)]"
-              )}
-            />
+            <UnifiedBackground />
             <Navbar />
-            <main className="relative z-10">
+            <main className="relative z-10 w-full">
               {children}
             </main>
           </>
