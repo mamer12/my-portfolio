@@ -9,7 +9,7 @@ import Contact from "@/components/contact";
 
 export default function HomePage() {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full overflow-x-hidden pb-28 md:pb-0">
       <Hero />
       <About />
       <Projects />

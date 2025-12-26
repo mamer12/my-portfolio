@@ -82,7 +82,7 @@ export default function About() {
           </h2>
         </div>
 
-        <div className="grid w-full auto-rows-[180px] grid-cols-1 gap-4 sm:auto-rows-[200px] sm:grid-cols-2 lg:auto-rows-[220px] lg:grid-cols-4 lg:gap-6">
+        <div className="grid w-full auto-rows-[160px] grid-cols-1 gap-4 sm:auto-rows-[200px] sm:grid-cols-2 lg:auto-rows-[220px] lg:grid-cols-4 lg:gap-6">
           <BentoCard className="col-span-1 row-span-2 sm:col-span-2 lg:col-span-2 p-6 sm:p-8">
             <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.08em] text-white/60">
               <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1">
@@ -166,10 +166,10 @@ export default function About() {
           </BentoCard>
 
           <BentoCard className="col-span-1 row-span-1 p-5 sm:p-6">
-            <div className="flex h-full items-center justify-between gap-4">
-              <div>
+            <div className="flex h-full flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+              <div className="flex-1">
                 <p className="text-sm uppercase tracking-[0.1em] text-white/60">Social</p>
-                <p className="text-lg font-semibold">Let&apos;s build something</p>
+                <p className="text-base sm:text-lg font-semibold">Let&apos;s build something</p>
               </div>
               <div className="flex gap-3">
                 <a
