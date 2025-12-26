@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import Image from "next/image";
 
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
@@ -141,11 +142,13 @@ export default function Projects() {
           <div className="sticky top-24">
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-white/15 bg-white/5 shadow-[0_20px_70px_rgba(0,0,0,0.35)]">
               {activeProject?.previewImage ? (
-                <img
+                <Image
                   key={activeProject.previewImage}
                   src={activeProject.previewImage}
                   alt={activeProject.title}
-                  className="h-full w-full object-cover"
+                  fill
+                  className="object-cover"
+                  unoptimized
                 />
               ) : activeProject?.previewVideo ? (
                 <video

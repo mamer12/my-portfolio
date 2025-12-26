@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
-import { DarkVeil } from "@/components/magicui/dark-veil";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 

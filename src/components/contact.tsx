@@ -1,8 +1,6 @@
 "use client";
 
 import { useMemo, useState, useRef } from "react";
-import { BlurFade } from "@/components/magicui/blur-fade";
-import { DarkVeil } from "@/components/magicui/dark-veil";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
@@ -187,7 +185,7 @@ export default function Contact() {
               
               {submitStatus === "success" && (
                 <div className="rounded-xl bg-emerald-500/20 border border-emerald-500/30 px-4 py-3 text-sm text-emerald-200">
-                  ✓ Message sent successfully! I'll get back to you soon.
+                  ✓ Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
               
