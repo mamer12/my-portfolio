@@ -7,6 +7,7 @@ import Lenis from 'lenis';
 import Navbar from '@/components/navbar'
 import Loader from '@/components/loader'
 import UnifiedBackground from '@/components/unified-background'
+import { getAnimationSettings } from '@/lib/performance'
 
 export default function RootLayout({
   children,
@@ -24,9 +25,17 @@ export default function RootLayout({
   }, []);
 
   useEffect(() => {
+    const { lerpValue, shouldAnimate } = getAnimationSettings();
+    
+    // Disable smooth scroll on mobile for better performance
+    if (!shouldAnimate || window.innerWidth < 768) {
+      return;
+    }
+
     const lenis = new Lenis({
-      lerp: 0.08,
+      lerp: lerpValue,
       smoothWheel: true,
+      touchMultiplier: 1.5,
     });
 
     const raf = (time: number) => {

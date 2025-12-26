@@ -1,8 +1,24 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import LightPillar from "@/components/magicui/light-pillar";
+import { getAnimationSettings } from "@/lib/performance";
 
 export default function UnifiedBackground() {
+  const [shouldRenderComplex, setShouldRenderComplex] = useState(true);
+
+  useEffect(() => {
+    const { shouldUseHeavyEffects } = getAnimationSettings();
+    setShouldRenderComplex(shouldUseHeavyEffects);
+  }, []);
+
+  if (!shouldRenderComplex) {
+    // Simple gradient background for mobile
+    return (
+      <div className="fixed inset-0 z-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a0a2a] to-[#0a0a0a]" />
+    );
+  }
+
   return (
     <div className="fixed inset-0 z-0 bg-[#0a0a0a]">
       <LightPillar

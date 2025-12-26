@@ -76,6 +76,8 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    /* Improve mobile scrolling performance */
+    -webkit-overflow-scrolling: touch;
   }
   
   body {
@@ -88,12 +90,43 @@
     padding: 0;
     min-height: 100vh;
     scrollbar-gutter: stable;
+    /* Improve mobile rendering performance */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   a,
   button {
     transition: color 150ms ease, background-color 150ms ease, transform 150ms ease;
     touch-action: manipulation;
+    /* Improve tap highlight on mobile */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Optimize for mobile devices */
+  @media (max-width: 768px) {
+    body {
+      /* Force GPU acceleration */
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+
+    /* Reduce blur effects on mobile */
+    * {
+      filter: none !important;
+    }
   }
 }
 
@@ -159,7 +192,13 @@
       radial-gradient(900px at 80% 15%, rgba(255, 90, 110, 0.18), transparent 42%),
       radial-gradient(700px at 40% 80%, rgba(58, 196, 125, 0.14), transparent 40%),
       radial-gradient(900px at 70% 70%, rgba(25, 181, 254, 0.12), transparent 45%);
-    animation: aurora 18s ease-in-out infinite alternate;
+  }
+
+  /* Disable expensive animations on mobile */
+  @media (min-width: 769px) {
+    .bg-aurora {
+      animation: aurora 18s ease-in-out infinite alternate;
+    }
   }
 
   @keyframes aurora {

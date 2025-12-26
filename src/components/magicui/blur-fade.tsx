@@ -7,7 +7,8 @@ import {
   UseInViewOptions,
   Variants,
 } from "motion/react";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import { prefersReducedMotion, isMobileDevice } from "@/lib/performance";
 
 type MarginType = UseInViewOptions["margin"];
 
@@ -42,12 +43,21 @@ export function BlurFade({
   const ref = useRef(null);
   const inViewResult = useInView(ref, { once: true, margin: inViewMargin });
   const isInView = !inView || inViewResult;
+  const [shouldAnimate, setShouldAnimate] = useState(true);
+
+  useEffect(() => {
+    // Disable animations on mobile or if user prefers reduced motion
+    if (prefersReducedMotion() || isMobileDevice()) {
+      setShouldAnimate(false);
+    }
+  }, []);
+
   const defaultVariants: Variants = {
     hidden: {
       [direction === "left" || direction === "right" ? "x" : "y"]:
         direction === "right" || direction === "down" ? -offset : offset,
       opacity: 0,
-      filter: `blur(${blur})`,
+      filter: shouldAnimate ? `blur(${blur})` : `blur(0px)`,
     },
     visible: {
       [direction === "left" || direction === "right" ? "x" : "y"]: 0,
@@ -56,6 +66,12 @@ export function BlurFade({
     },
   };
   const combinedVariants = variant || defaultVariants;
+
+  // If animations are disabled, render children directly
+  if (!shouldAnimate) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <AnimatePresence>
       <motion.div
@@ -66,7 +82,7 @@ export function BlurFade({
         variants={combinedVariants}
         transition={{
           delay: 0.04 + delay,
-          duration,
+          duration: duration * 0.7, // Faster on all devices
           ease: "easeOut",
         }}
         className={className}
