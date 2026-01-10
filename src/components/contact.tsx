@@ -46,7 +46,7 @@ export default function Contact() {
 
       setSubmitStatus("success");
       formRef.current.reset();
-      
+
       // Hide success message after 3 seconds
       setTimeout(() => {
         setSubmitStatus("idle");
@@ -55,7 +55,7 @@ export default function Contact() {
     } catch (error) {
       console.error("Failed to send email:", error);
       setSubmitStatus("error");
-      
+
       // Hide error message after 3 seconds
       setTimeout(() => {
         setSubmitStatus("idle");
@@ -83,129 +83,129 @@ export default function Contact() {
           </div>
         </div>
 
-          <div className="relative z-10 w-full max-w-4xl mx-auto overflow-hidden rounded-3xl border border-white/12 bg-black/40 backdrop-blur-xl p-6 shadow-[0_20px_70px_rgba(0,0,0,0.55)] sm:p-8">
-        {copied && (
-          <div className="pointer-events-none absolute inset-0">
-            {confetti.map((_, index) => (
-              <span
-                key={`confetti-${index}`}
-                className="confetti-piece"
-                style={{ left: `${Math.random() * 100}%`, animationDelay: `${index * 0.05}s` }}
-              />
-            ))}
-          </div>
-        )}
+        <div className="relative z-10 w-full max-w-4xl mx-auto overflow-hidden rounded-3xl border border-white/12 bg-black/40 backdrop-blur-xl p-6 shadow-[0_20px_70px_rgba(0,0,0,0.55)] sm:p-8">
+          {copied && (
+            <div className="pointer-events-none absolute inset-0">
+              {confetti.map((_, index) => (
+                <span
+                  key={`confetti-${index}`}
+                  className="confetti-piece"
+                  style={{ left: `${Math.random() * 100}%`, animationDelay: `${index * 0.05}s` }}
+                />
+              ))}
+            </div>
+          )}
 
-        <div className="flex flex-col gap-6">
-          <button
-            onClick={handleCopy}
-            className="group relative w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5 px-4 py-6 text-left transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
-          >
-            <p className="text-sm uppercase tracking-[0.12em] text-white/60">Email</p>
-            <p className="text-2xl font-semibold leading-tight break-words text-balance sm:text-4xl lg:text-5xl">
-              {emailAddress}
-            </p>
-            <p className="mt-2 text-sm text-white/70">
-              {copied ? "Copied! 🎉" : "Click to copy · Responses within a day"}
-            </p>
-          </button>
+          <div className="flex flex-col gap-6">
+            <button
+              onClick={handleCopy}
+              className="group relative w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5 px-4 py-6 text-left transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+            >
+              <p className="text-sm uppercase tracking-[0.12em] text-white/60">Email</p>
+              <p className="text-2xl font-semibold leading-tight break-words text-balance sm:text-4xl lg:text-5xl">
+                {emailAddress}
+              </p>
+              <p className="mt-2 text-sm text-white/70">
+                {copied ? "Copied! 🎉" : "Click to copy · Responses within a day"}
+              </p>
+            </button>
 
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex gap-3">
-              <a
-                href="https://github.com/mamer12"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <div className="flex gap-3">
+                <a
+                  href="https://github.com/mamer12"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+                >
+                  <FaGithub className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mamerma1234/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
+                >
+                  <FaLinkedin className="h-6 w-6" />
+                </a>
+              </div>
+
+              <button
+                onClick={() => setShowForm((prev) => !prev)}
+                className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
               >
-                <FaGithub className="h-6 w-6" />
-              </a>
-              <a
-                href="https://linkedin.com/in/mustafa-amer-b0b1b1b1/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
-              >
-                <FaLinkedin className="h-6 w-6" />
-              </a>
+                {showForm ? "Hide message form" : "Send me a message"}
+              </button>
+            </div>
+            <div className="text-sm text-white/60">
+              <p>Phone: +964 7810940050</p>
+              <p>Location: Baghdad, Iraq</p>
             </div>
 
-            <button
-              onClick={() => setShowForm((prev) => !prev)}
-              className="rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
-            >
-              {showForm ? "Hide message form" : "Send me a message"}
-            </button>
-          </div>
-          <div className="text-sm text-white/60">
-            <p>Phone: +964 7810940050</p>
-            <p>Location: Baghdad, Iraq</p>
-          </div>
-
-          {showForm && (
-            <form
-              ref={formRef}
-              className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6"
-              onSubmit={handleSubmit}
-            >
-              <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
-                <label className="w-full text-sm text-white/70">
-                  Name
-                  <input
-                    type="text"
-                    name="from_name"
-                    required
-                    disabled={isSubmitting}
-                    className="mt-2 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
-                    placeholder="Your name"
-                  />
-                </label>
-                <label className="w-full text-sm text-white/70">
-                  Email
-                  <input
-                    type="email"
-                    name="reply_to"
-                    required
-                    disabled={isSubmitting}
-                    className="mt-2 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
-                    placeholder="you@example.com"
-                  />
-                </label>
-              </div>
-              <label className="block text-sm text-white/70">
-                Message
-                <textarea
-                  name="message"
-                  required
-                  disabled={isSubmitting}
-                  className="mt-2 h-32 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
-                  placeholder="Tell me about your idea..."
-                />
-              </label>
-              
-              {submitStatus === "success" && (
-                <div className="rounded-xl bg-emerald-500/20 border border-emerald-500/30 px-4 py-3 text-sm text-emerald-200">
-                  ✓ Message sent successfully! I&apos;ll get back to you soon.
-                </div>
-              )}
-              
-              {submitStatus === "error" && (
-                <div className="rounded-xl bg-red-500/20 border border-red-500/30 px-4 py-3 text-sm text-red-200">
-                  ✗ Failed to send message. Please try again or email me directly.
-                </div>
-              )}
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+            {showForm && (
+              <form
+                ref={formRef}
+                className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6"
+                onSubmit={handleSubmit}
               >
-                {isSubmitting ? "Sending..." : "Send it over"}
-              </button>
-            </form>
-          )}
+                <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+                  <label className="w-full text-sm text-white/70">
+                    Name
+                    <input
+                      type="text"
+                      name="from_name"
+                      required
+                      disabled={isSubmitting}
+                      className="mt-2 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
+                      placeholder="Your name"
+                    />
+                  </label>
+                  <label className="w-full text-sm text-white/70">
+                    Email
+                    <input
+                      type="email"
+                      name="reply_to"
+                      required
+                      disabled={isSubmitting}
+                      className="mt-2 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
+                      placeholder="you@example.com"
+                    />
+                  </label>
+                </div>
+                <label className="block text-sm text-white/70">
+                  Message
+                  <textarea
+                    name="message"
+                    required
+                    disabled={isSubmitting}
+                    className="mt-2 h-32 w-full rounded-xl border border-white/15 bg-black/30 px-3 py-3 text-white focus:border-white/40 focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50"
+                    placeholder="Tell me about your idea..."
+                  />
+                </label>
+
+                {submitStatus === "success" && (
+                  <div className="rounded-xl bg-emerald-500/20 border border-emerald-500/30 px-4 py-3 text-sm text-emerald-200">
+                    ✓ Message sent successfully! I&apos;ll get back to you soon.
+                  </div>
+                )}
+
+                {submitStatus === "error" && (
+                  <div className="rounded-xl bg-red-500/20 border border-red-500/30 px-4 py-3 text-sm text-red-200">
+                    ✗ Failed to send message. Please try again or email me directly.
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-semibold text-black shadow-lg transition-transform duration-200 hover:-translate-y-0.5 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Sending..." : "Send it over"}
+                </button>
+              </form>
+            )}
+          </div>
         </div>
-      </div>
       </div>
     </section>
   );

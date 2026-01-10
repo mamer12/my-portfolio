@@ -5,8 +5,6 @@ import { Marquee } from "@/components/magicui/marquee";
 import {
   FaAws,
   FaDocker,
-  FaGithub,
-  FaLinkedin,
   FaNodeJs,
   FaPython,
   FaReact,
@@ -162,33 +160,6 @@ export default function About() {
               </Marquee>
               <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
               <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
-            </div>
-          </BentoCard>
-
-          <BentoCard className="col-span-1 row-span-1 p-5 sm:p-6">
-            <div className="flex h-full flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-              <div className="flex-1">
-                <p className="text-sm uppercase tracking-[0.1em] text-white/60">Social</p>
-                <p className="text-base sm:text-lg font-semibold">Let&apos;s build something</p>
-              </div>
-              <div className="flex gap-3">
-                <a
-                  href="https://github.com/mamer12"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
-                >
-                  <FaGithub className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/mustafa-amer-b0b1b1b1/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"
-                >
-                  <FaLinkedin className="h-5 w-5" />
-                </a>
-              </div>
             </div>
           </BentoCard>
         </div>

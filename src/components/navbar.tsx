@@ -43,7 +43,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="pointer-events-none fixed bottom-4 left-0 right-0 z-[9999] flex justify-center px-4 md:bottom-8">
+    <nav className="pointer-events-none fixed bottom-8 left-0 right-0 z-[9999] flex justify-center px-4">
       <div className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-2xl shadow-[0_12px_50px_rgba(0,0,0,0.35)]">
         <div className="mr-2 hidden items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold text-white/80 sm:flex">
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-black">MA</span>
@@ -77,7 +77,7 @@ const Navbar = () => {
             <FaGithub className="h-5 w-5" />
           </a>
           <a
-            href="https://www.linkedin.com/in/mustafa-amer-b0b1b1b1/"
+            href="https://www.linkedin.com/in/mamerma1234/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-all duration-200 hover:border-white/30 hover:bg-white/10 active:scale-95"

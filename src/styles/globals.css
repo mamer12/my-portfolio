@@ -8,16 +8,16 @@
   --text-color: #ffffff;
   --text-color-secondary: #a0a0a0;
   --border-color: #303030;
-  
+
   --font-primary: 'Raleway', sans-serif;
   --font-secondary: 'Sora', sans-serif;
-  
+
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
-  
+
   --border-radius: 8px;
   --transition-speed: 0.3s;
 }
@@ -68,14 +68,4 @@ button {
 .grid {
   display: grid;
   gap: var(--spacing-lg);
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 var(--spacing-sm);
-  }
-  
-  .section {
-    padding: var(--spacing-lg) 0;
-  }
 }

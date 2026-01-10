@@ -23,7 +23,7 @@ const projects: Project[] = [
       "Zero-downtime migration for 3M+ users from NoSQL to PostgreSQL with dual-write and shadow reads, hardened for high-transaction telecom workloads.",
     technologies: ["PostgreSQL", "Redis", "FastAPI", "Microservices", "Observability"],
     githubUrl: "https://github.com/mamer12",
-    previewImage: "https://web-api.iq.zain.com/storage/app/uploads/public/690/71e/89b/69071e89b0e2d310233685.jpg",
+    previewImage: "",
   },
   {
     title: "Loan Lifecycle Platform (FFC)",
@@ -31,7 +31,7 @@ const projects: Project[] = [
       "FastAPI microservices orchestrating digital lending: dynamic approvals, automated credit scoring, and ERP/core banking integrations with secure middleware.",
     technologies: ["FastAPI", "Docker", "PostgreSQL", "GitHub Actions", "API Gateway"],
     githubUrl: "https://github.com/mamer12",
-    previewImage: "https://media.licdn.com/dms/image/v2/C4D0BAQEWFDMcddLRZA/company-logo_200_200/company-logo_200_200/0/1662909965193?e=2147483647&v=beta&t=vE76bTvyt5g9L5pYxp52IdETEwfY0xz1zk6j_Ogw8LA",
+    previewImage: "",
   },
   {
     title: "ERP Integration & Middleware",
@@ -39,7 +39,7 @@ const projects: Project[] = [
       "Unified middleware bridging legacy ERP, mobile apps, and banking services with real-time sync, auth (JWT/OAuth), and resilience patterns.",
     technologies: ["Node.js", "GraphQL/REST", "Redis", "CI/CD", "Security"],
     githubUrl: "https://github.com/mamer12",
-    previewImage: "https://media.licdn.com/dms/image/v2/C4D0BAQEWFDMcddLRZA/company-logo_200_200/company-logo_200_200/0/1662909965193?e=2147483647&v=beta&t=vE76bTvyt5g9L5pYxp52IdETEwfY0xz1zk6j_Ogw8LA",
+    previewImage: "",
   },
   {
     title: "Workflow Automation & DevOps",
@@ -47,7 +47,7 @@ const projects: Project[] = [
       "BPMN-driven automations that cut manual ops by 30% plus CI/CD pipelines, test automation, and infra as code to ship safely at pace.",
     technologies: ["BPMN", "CI/CD", "Test Automation", "Redis", "Next.js"],
     githubUrl: "https://github.com/mamer12",
-    previewImage: "https://media.shafaq.com/media/arcella/1740851506557.jpg",
+    previewImage: "",
   },
 ];
 
