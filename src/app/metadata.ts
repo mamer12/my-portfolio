@@ -1,67 +1,68 @@
 import type { Metadata } from "next";
+import { site } from "@/lib/content";
 
-const siteUrl = "https://mustafaa.xyz";
-const name = "Mustafa Al-Mosuli";
-const title = "Mustafa Al-Mosuli - Senior Backend Engineer | FastAPI & Microservices Specialist";
+const title = `${site.name} — Senior Backend & AI Engineer | Microservices, Event-Driven Systems, AI-Native Development`;
+
 const description =
-  "Senior Backend Engineer with 5+ years of experience architecting microservices, FastAPI platforms, and ERP integrations. Specialized in high-transaction fintech/telecom systems with 3M+ users. Expert in Python, Node.js, PostgreSQL, and Redis.";
+  "Senior Backend & AI Engineer with six years building production systems across telecom and fintech. Currently serving a 10M+ subscriber base at Zain Iraq. Python/FastAPI and Node.js/TypeScript microservices, event pipelines at 10,000+ messages per second, PostgreSQL at scale, and AI-native engineering with Claude Code, Gemini, and Codex.";
+
 const keywords = [
-  "Backend Engineer",
-  "Software Engineer Iraq",
+  "Senior Backend Engineer",
+  "AI Engineer",
+  "AI-Native Developer",
+  "Claude Code",
+  "LLM Pipelines",
+  "Backend Engineer Iraq",
   "FastAPI Developer",
-  "Python Developer",
+  "Python Backend Engineer",
+  "Node.js Engineer",
   "Microservices Architect",
+  "Event-Driven Architecture",
   "PostgreSQL Expert",
-  "Node.js Developer",
-  "Baghdad Developer",
-  "Senior Software Engineer",
-  "Mustafa Al-Mosuli",
-  "Fintech Engineer",
-  "Telecom Systems",
+  "Kafka Engineer",
+  "Data Migration Engineer",
+  "Baghdad Software Engineer",
+  "Fintech Backend Engineer",
+  "Telecom Systems Engineer",
   "ERP Integration",
-  "Full Stack Engineer",
-  "Redis Expert",
-  "Docker",
-  "AWS",
-  "TypeScript",
-  "Next.js",
+  "BPMN Workflow Automation",
+  "Loan Management Systems",
+  site.name,
+  site.altName,
 ];
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(site.url),
   title: {
     default: title,
-    template: `%s | ${name}`,
+    template: `%s | ${site.name}`,
   },
   description,
   keywords: keywords.join(", "),
-  authors: [
-    {
-      name,
-      url: siteUrl,
-    },
-  ],
-  creator: name,
-  publisher: name,
+  applicationName: `${site.name} — Portfolio`,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  publisher: site.name,
+  category: "technology",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
-    alternateLocale: ["ar_IQ", "ar_AE", "ar_SA"], // Arabic support for Iraq, UAE, Saudi Arabia
-    url: siteUrl,
+    alternateLocale: ["ar_IQ", "ar_AE", "ar_SA"],
+    url: site.url,
     title,
     description,
-    siteName: name,
+    siteName: site.name,
     images: [
       {
-        url: `${siteUrl}/og-image.jpg`,
+        url: `${site.url}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: `${name} - Backend Engineer Portfolio`,
+        alt: `${site.name} — Senior Backend & AI Engineer`,
       },
     ],
   },
@@ -69,8 +70,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title,
     description,
-    images: [`${siteUrl}/og-image.jpg`],
-    creator: "@mamer12", // Update with your Twitter handle if you have one
+    images: [`${site.url}/og-image.jpg`],
+    creator: "@mamer12",
   },
   robots: {
     index: true,
@@ -89,23 +90,23 @@ export const metadata: Metadata = {
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
   manifest: "/site.webmanifest",
   alternates: {
-    canonical: siteUrl,
+    canonical: site.url,
     languages: {
-      "en-US": siteUrl,
-      "ar-IQ": siteUrl, // Arabic - Iraq
-      "ar-AE": siteUrl, // Arabic - UAE
-      "ar-SA": siteUrl, // Arabic - Saudi Arabia
-      "ar": siteUrl,    // Generic Arabic
+      "en-US": site.url,
+      "ar-IQ": site.url,
+      "ar-AE": site.url,
+      "ar-SA": site.url,
+      ar: site.url,
     },
   },
   verification: {
     google: "t4Ta58_fANjak8Ye7Nn8e_sYeUBkLg38KPl2BY8oQIA",
-    // yandex: 'your-yandex-verification-code',
-    // bing: 'your-bing-verification-code',
   },
 };
 
@@ -114,8 +115,5 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-  ],
+  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#08090a" }],
 };
